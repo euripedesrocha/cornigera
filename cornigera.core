@@ -1,0 +1,23 @@
+CAPI=2:
+name: mutalabs:processor:cornigera:0.1
+description: Risc V implementation
+
+filesets:
+  rtl:
+    files:
+      - rtl/cornigera.v
+    file:type: verilogSource
+  verilator_tb:
+    files: [tb/tb.cpp : {file_type : cppSource}]
+
+targets:
+  sim:
+    default_tool: verilator
+    tools:
+      verilator:
+        verilator_options : [--trace, -Wno-fatal]
+    toplevel : swervolf_core_tb
+
+  default:
+    filesets: [rtl]
+    
