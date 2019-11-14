@@ -3,20 +3,46 @@ name: mutalabs:processor:cornigera:0.1
 description: Risc V implementation
 
 filesets:
+  common:
+    files:
+      - rtl/cornigera_pkg.sv
+    file_type: systemVerilogSource
+
+  registers:
+    files:
+      - rtl/registers.sv
+    file_type: systemVerilogSource
+
   rtl:
     files:
-      - rtl/cornigera.v
-    file:type: verilogSource
+      - rtl/cornigera.sv
+    file_type: systemVerilogSource
+
   verilator_tb:
     files: [tb/tb.cpp : {file_type : cppSource}]
+  registers_tb:
+    files: 
+      - tb/support/catch.hpp : {is_include_file: true}
+      - tb/tb_common_main.cpp
+      - tb/registers_tb.cpp
+    file_type : cppSource
 
 targets:
   sim:
     default_tool: verilator
     tools:
       verilator:
-        verilator_options : [--trace, -Wno-fatal]
-    toplevel : swervolf_core_tb
+        verilator_options : [-sv, --trace, -Wno-fatal]
+    toplevel : cornigera
+
+  sim_register_file:
+    default_tool: verilator
+    filesets: [common, registers, registers_tb]
+    tools:
+      verilator:
+        verilator_options : [-sv, -Wall, -Wno-fatal]
+    toplevel: registers 
+
 
   default:
     filesets: [rtl]
