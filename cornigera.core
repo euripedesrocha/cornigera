@@ -23,6 +23,7 @@ filesets:
   registers_tb:
     files: 
       - tb/support/catch.hpp : {is_include_file: true}
+      - tb/support/test_types.hpp : {is_include_file: true}
       - tb/tb_common_main.cpp
       - tb/registers_tb.cpp
     file_type : cppSource
@@ -40,7 +41,7 @@ targets:
     filesets: [common, registers, registers_tb]
     tools:
       verilator:
-        verilator_options : [-sv, -Wall, -Wno-fatal]
+        verilator_options : [-sv, -Wall, -Wno-fatal, -CFLAGS -std=c++17]
     toplevel: registers 
 
 
