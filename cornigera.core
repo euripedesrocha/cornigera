@@ -41,7 +41,7 @@ targets:
     filesets: [common, registers, registers_tb]
     tools:
       verilator:
-        verilator_options : [-sv, -Wall, -Wno-fatal, -CFLAGS -std=c++17]
+        verilator_options : [-sv, -Wall, -Wno-fatal, +define+XLEN+32, -CFLAGS -std=c++17]
     toplevel: registers 
 
 

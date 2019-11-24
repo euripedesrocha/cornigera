@@ -1,12 +1,11 @@
-//import cornigera_pkg::*;
+import cornigera_pkg::*;
 
 module registers (
   input logic clk,
-  //input RegisterName write_to,
-  //input RegisterName read_from,
-  input logic write_data,
-  output logic read_data
+  input RegisterName write_to,
+  input RegisterName read_from,
+  input DataType write_data
+  output DataType read_data
 );
 
-assign read_data = write_data;
 endmodule

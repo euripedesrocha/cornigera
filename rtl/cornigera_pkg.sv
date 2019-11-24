@@ -1,3 +1,5 @@
 package cornigera_pkg;
-  typedef enum logic [4:0]{R0} RegisterName; 
+  parameter CORE_XLEN = `XLEN;
+  typedef enum logic [0:5]{zero, ra} RegisterName/* verilator public */;
+  typedef logic [0:CORE_XLEN -1 ] DataType; 
 endpackage
