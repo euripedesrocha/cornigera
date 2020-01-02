@@ -28,6 +28,12 @@ filesets:
       - tb/registers_tb.cpp
     file_type : cppSource
 
+parameters:
+  XLEN:
+    datatype: int
+    default: 32
+    paramtype: vlogdefine
+
 targets:
   sim:
     default_tool: verilator
@@ -38,10 +44,11 @@ targets:
 
   sim_register_file:
     default_tool: verilator
+    parameters: [XLEN]
     filesets: [common, registers, registers_tb]
     tools:
       verilator:
-        verilator_options : [-sv, -Wall, -Wno-fatal, +define+XLEN+32, -CFLAGS -std=c++17]
+        verilator_options : [-sv, -Wall, -Wno-fatal, --trace,  -CFLAGS -std=c++17]
     toplevel: registers 
 
 
