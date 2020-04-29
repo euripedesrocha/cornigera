@@ -22,10 +22,8 @@ filesets:
     files: [tb/tb.cpp : {file_type : cppSource}]
   registers_tb:
     files: 
-      - tb/support/catch.hpp : {is_include_file: true}
-      - tb/support/test_types.hpp : {is_include_file: true}
-      - tb/tb_common_main.cpp
       - tb/registers_tb.cpp
+    depend: [mutalabs:test:tbpp:0.1]
     file_type : cppSource
 
 parameters:

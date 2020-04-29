@@ -1,9 +1,9 @@
+#include <catch.hpp>
 #include <cstdint>
 #include <memory>
+#include <tbpp.hpp>
 
 #include "Vregisters.h"
-#include "catch.hpp"
-#include "test_types.hpp"
 
 enum class reg : uint8_t { zero, ra };
 
