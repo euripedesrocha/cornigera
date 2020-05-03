@@ -20,6 +20,7 @@ filesets:
 
   verilator_tb:
     files: [tb/tb.cpp : {file_type : cppSource}]
+
   registers_tb:
     files: 
       - tb/registers_tb.cpp
